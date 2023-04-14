@@ -37,8 +37,13 @@ public class DataProcessingController {
 			System.out.println(eachEntry.getKey() + " - " + eachEntry.getValue());
 		}
 
+		System.out.println("----------------Round Over----------------------");
+		System.out.println("----------------Changing Signal Yellow Light Turning On----------------------");
+
 		System.out.println("NSysLatch" + " - " + true);
 		System.out.println("EWysLatch" + " - " + true);
+		
+		System.out.println("----------------Changing Signal Yellow Light Turning Off----------------------");
 
 		return true;
 	}
