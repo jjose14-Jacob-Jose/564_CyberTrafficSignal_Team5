@@ -2,8 +2,6 @@ package logic;
 
 public class InputData {
 
-	// double random = Math.random();
-
 	private boolean isNorthEmergency;
 	private boolean isSouthEmergency;
 	private boolean isEastEmergency;
@@ -38,23 +36,6 @@ public class InputData {
 
 	public void setSaturationEW(int saturationEW) {
 		this.saturationEW = saturationEW;
-	}
-
-	public InputData() {
-		super();
-		// this.random = random;
-		this.isNorthEmergency = isNorthEmergency;
-		this.isSouthEmergency = isSouthEmergency;
-		this.isEastEmergency = isEastEmergency;
-		this.isWestEmergency = isWestEmergency;
-		this.northIncomingVehicle = northIncomingVehicle;
-		this.northOutgoingVehicle = northOutgoingVehicle;
-		this.southIncomingVehicle = southIncomingVehicle;
-		this.southOutgoingVehicle = southOutgoingVehicle;
-		this.eastIncomingVehicle = eastIncomingVehicle;
-		this.eastOutgoingVehicle = eastOutgoingVehicle;
-		this.westIncomingVehicle = westIncomingVehicle;
-		this.westOutgoingVehicle = westOutgoingVehicle;
 	}
 
 	public boolean isNorthEmergency() {
