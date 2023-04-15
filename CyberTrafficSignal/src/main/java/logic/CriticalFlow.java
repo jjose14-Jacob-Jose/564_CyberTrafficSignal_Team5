@@ -68,11 +68,11 @@ public class CriticalFlow {
 
 		if (this.countPrimaryRoad != null && this.countSecondaryRoad != null && this.direction != null) {
 			if (this.getDirection().equals("NS")) {
-				criticalFlowNS = ((double) this.saturationNS / this.countPrimaryRoad);
-				criticalFlowEW = ((double) this.saturationEW / this.countSecondaryRoad);
+				criticalFlowNS = ((double) this.countPrimaryRoad * 60 / this.saturationNS * 1.000);
+				criticalFlowEW = ((double) this.countSecondaryRoad * 60 / this.saturationEW * 1.000);
 			} else {
-				criticalFlowEW = ((double) this.saturationEW / this.countPrimaryRoad);
-				criticalFlowNS = ((double) this.saturationNS / this.countSecondaryRoad);
+				criticalFlowEW = ((double) this.countPrimaryRoad * 60 / this.saturationEW * 1.000);
+				criticalFlowNS = ((double) this.countSecondaryRoad * 60 / this.saturationNS * 1.000);
 			}
 		}
 

@@ -18,7 +18,7 @@ public class DataProcessingController {
 		this.emergency = emergency;
 	}
 
-	public boolean calculateChangeSignal() {
+	public Map<String, Boolean> calculateChangeSignal() {
 		if (greenTime != null) {
 			this.counter = this.greenTime;
 		}
@@ -47,22 +47,12 @@ public class DataProcessingController {
 		}
 
 		System.out.println(" ");
-		System.out.println("----------------Round Over----------------------");
+		System.out.println("                    ********* Round Over *********                      ");
 
+		System.out.println("---------------------------------------------------------------------------------------------------------------------");
 		System.out.println(" ");
 
-		System.out.println("----------------Changing Signal Yellow Light Turning On----------------------");
-
-		System.out.println(" ");
-		System.out.println(Constants.ANSI_YELLOW + Constants.trafficSignal.get("NSysLatch") + Constants.ANSI_RESET);
-		System.out.println(Constants.ANSI_YELLOW + Constants.trafficSignal.get("EWysLatch") + Constants.ANSI_RESET);
-
-		System.out.println(" ");
-
-		System.out.println("----------------Changing Signal Yellow Light Turning Off----------------------");
-		System.out.println(" ");
-
-		return true;
+		return map;
 	}
 
 }

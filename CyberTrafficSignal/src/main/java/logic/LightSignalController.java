@@ -47,7 +47,7 @@ public class LightSignalController {
 
 		if (isEmergency) {
 			while (counter-- > 0) {
-				if (dir.equals("NS")) {
+				if (dir.equals(Constants.NS)) {
 					NSgsLatch = true;
 					EWrsLatch = true;
 				} else {
@@ -58,7 +58,7 @@ public class LightSignalController {
 
 			isEmergency = false;
 		} else {
-			if (direction.equals("NS")) {
+			if (direction.equals(Constants.NS)) {
 				NSgsLatch = true;
 				EWrsLatch = true;
 

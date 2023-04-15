@@ -68,12 +68,18 @@ public class Application {
 
 				System.out.println(" ");
 
+				System.out.println(
+						isAnyEmergency != null ? "Emergency Vehicle detected for " + isAnyEmergency + " direction."
+								: "No Emergency Vehicle detected in this round.");
+
+				System.out.println(" ");
+
 				// Determine Direction and Count
 				DetermineDirection determineDirection = new DetermineDirection(lastNorthVehicleCount,
 						lastSouthVehicleCount, lastEastVehicleCount, lastWestVehicleCount, lastExecution, changeSignal);
 
 				Node result = determineDirection.determineCountAndDirection();
-				lastExecution = result.getLastExecution();
+				// lastExecution = result.getLastExecution();
 
 				// Critical Flow
 
@@ -88,13 +94,20 @@ public class Application {
 
 				int greenTime = webster.findGreenTime();
 
-				System.out.println("Calculated Green Time: " + greenTime);
+				System.out.println(isAnyEmergency == null ? "Calculated Green Time: " + greenTime + " seconds"
+						: "Calculated Green Time: 20 seconds");
 				System.out.println(" ");
 
 				// Data Processing Controller
 				DataProcessingController dataProcessingController = new DataProcessingController(greenTime,
 						result.getDirection(), isAnyEmergency);
-				dataProcessingController.calculateChangeSignal();
+				Map<String, Boolean> lightSignalResponse = dataProcessingController.calculateChangeSignal();
+
+				if (lightSignalResponse.get("EWgsLatch")) {
+					lastExecution = Constants.EW;
+				} else if (lightSignalResponse.get("NSgsLatch")) {
+					lastExecution = Constants.NS;
+				}
 
 			}
 		} catch (Exception e) {
