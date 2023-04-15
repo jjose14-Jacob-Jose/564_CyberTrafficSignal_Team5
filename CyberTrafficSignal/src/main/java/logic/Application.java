@@ -11,6 +11,7 @@ public class Application {
 	static int lastWestVehicleCount;
 	static String lastExecution;
 	static boolean changeSignal;
+	static int roundCount;
 
 	public static void main(String[] args) {
 
@@ -18,14 +19,20 @@ public class Application {
 		lastSouthVehicleCount = 0;
 		lastEastVehicleCount = 0;
 		lastWestVehicleCount = 0;
-		lastExecution = "NS";
+		lastExecution = Constants.NS;
 		changeSignal = true;
+		roundCount = 0;
 
 		try {
 
 			List<InputData> listOfRounds = ParseData.parseFile(".\\resources\\inputData.txt");
 
 			for (InputData inputData : listOfRounds) {
+				roundCount++;
+				System.out.println(
+						"                      ****** Round: " + roundCount + " started ******                      ");
+				System.out.println(" ");
+
 				EmergencyVehiclePolling evp = new EmergencyVehiclePolling(inputData);
 
 				String isAnyEmergency = evp.isAnyEmergency();
@@ -50,6 +57,17 @@ public class Application {
 						inputData.getWestOutgoingVehicle());
 				lastWestVehicleCount += vehicleCounterWest.getCount();
 
+				System.out.println("Current green direction: " + lastExecution);
+				System.out.println(" ");
+
+				System.out.println(
+						"North vehicle Count         South vehicle Count          West vehicle Count          East vehicle Count");
+				System.out.println("       " + lastNorthVehicleCount + "     " + "                    "
+						+ lastSouthVehicleCount + "     " + "                            " + lastWestVehicleCount
+						+ "     " + "               " + lastEastVehicleCount + "     ");
+
+				System.out.println(" ");
+
 				// Determine Direction and Count
 				DetermineDirection determineDirection = new DetermineDirection(lastNorthVehicleCount,
 						lastSouthVehicleCount, lastEastVehicleCount, lastWestVehicleCount, lastExecution, changeSignal);
@@ -69,6 +87,9 @@ public class Application {
 						result.getDirection());
 
 				int greenTime = webster.findGreenTime();
+
+				System.out.println("Calculated Green Time: " + greenTime);
+				System.out.println(" ");
 
 				// Data Processing Controller
 				DataProcessingController dataProcessingController = new DataProcessingController(greenTime,

@@ -34,16 +34,33 @@ public class DataProcessingController {
 		}
 
 		for (Entry<String, Boolean> eachEntry : map.entrySet()) {
-			System.out.println(eachEntry.getKey() + " - " + eachEntry.getValue());
+			if (eachEntry.getValue() == true) {
+				String val = Constants.trafficSignal.get(eachEntry.getKey());
+				if (val.contains("GREEN")) {
+					System.out.println(Constants.ANSI_GREEN + val + Constants.ANSI_RESET);
+				} else if (val.contains("RED")) {
+					System.out.println(Constants.ANSI_RED + val + Constants.ANSI_RESET);
+				}
+
+			}
+
 		}
 
+		System.out.println(" ");
 		System.out.println("----------------Round Over----------------------");
+
+		System.out.println(" ");
+
 		System.out.println("----------------Changing Signal Yellow Light Turning On----------------------");
 
-		System.out.println("NSysLatch" + " - " + true);
-		System.out.println("EWysLatch" + " - " + true);
-		
+		System.out.println(" ");
+		System.out.println(Constants.ANSI_YELLOW + Constants.trafficSignal.get("NSysLatch") + Constants.ANSI_RESET);
+		System.out.println(Constants.ANSI_YELLOW + Constants.trafficSignal.get("EWysLatch") + Constants.ANSI_RESET);
+
+		System.out.println(" ");
+
 		System.out.println("----------------Changing Signal Yellow Light Turning Off----------------------");
+		System.out.println(" ");
 
 		return true;
 	}

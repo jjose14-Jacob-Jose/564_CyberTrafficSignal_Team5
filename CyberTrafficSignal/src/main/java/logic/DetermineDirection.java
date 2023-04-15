@@ -75,29 +75,29 @@ public class DetermineDirection {
 		Node node = new Node();
 
 		if (this.changeSignal) {
-			if (this.lastExecution.equals("NS")) {
+			if (this.lastExecution.equals(Constants.NS)) {
 				if (eastWest > 0) {
 					node.setCountPrimary(eastWest);
 					node.setCountSecondary(northSouth);
-					node.setDirection("EW");
-					node.setLastExecution("EW");
+					node.setDirection(Constants.EW);
+					node.setLastExecution(Constants.EW);
 				} else {
 					node.setCountPrimary(northSouth);
 					node.setCountSecondary(eastWest);
-					node.setDirection("NS");
-					node.setLastExecution("NS");
+					node.setDirection(Constants.NS);
+					node.setLastExecution(Constants.NS);
 				}
 			} else {
 				if (northSouth > 0) {
 					node.setCountPrimary(northSouth);
 					node.setCountSecondary(eastWest);
-					node.setDirection("NS");
-					node.setLastExecution("NS");
+					node.setDirection(Constants.NS);
+					node.setLastExecution(Constants.NS);
 				} else {
 					node.setCountPrimary(eastWest);
 					node.setCountSecondary(northSouth);
-					node.setDirection("EW");
-					node.setLastExecution("EW");
+					node.setDirection(Constants.EW);
+					node.setLastExecution(Constants.EW);
 				}
 			}
 		}
