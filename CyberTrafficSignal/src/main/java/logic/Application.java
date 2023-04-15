@@ -12,6 +12,18 @@ public class Application {
 	static String lastExecution;
 	static boolean changeSignal;
 	static int roundCount;
+	static VehicleCounter vehicleCounterNorth;
+	static List<InputData> listOfRounds;
+	static EmergencyVehiclePolling evp;
+	static VehicleCounter vehicleCounterSouth;
+	static VehicleCounter vehicleCounterEast;
+	static VehicleCounter vehicleCounterWest;
+	static DetermineDirection determineDirection;
+	static Node result;
+	static CriticalFlow criticalFlow;
+	static Webster webster;
+	static DataProcessingController dataProcessingController;
+	static ParseData parseData;
 
 	public static void main(String[] args) {
 
@@ -22,10 +34,11 @@ public class Application {
 		lastExecution = Constants.NS;
 		changeSignal = true;
 		roundCount = 0;
+		parseData = new ParseData();
 
 		try {
 
-			List<InputData> listOfRounds = ParseData.parseFile(".\\resources\\inputData.txt");
+			listOfRounds = parseData.parseFile(".\\resources\\inputData.txt");
 
 			for (InputData inputData : listOfRounds) {
 				roundCount++;
@@ -33,27 +46,27 @@ public class Application {
 						"                      ****** Round: " + roundCount + " started ******                      ");
 				System.out.println(" ");
 
-				EmergencyVehiclePolling evp = new EmergencyVehiclePolling(inputData);
+				evp = new EmergencyVehiclePolling(inputData);
 
 				String isAnyEmergency = evp.isAnyEmergency();
 
 				// North Counter
-				VehicleCounter vehicleCounterNorth = new VehicleCounter(inputData.getNorthIncomingVehicle(),
+				vehicleCounterNorth = new VehicleCounter(inputData.getNorthIncomingVehicle(),
 						inputData.getNorthOutgoingVehicle());
 				lastNorthVehicleCount += vehicleCounterNorth.getCount();
 
 				// South Counter
-				VehicleCounter vehicleCounterSouth = new VehicleCounter(inputData.getSouthIncomingVehicle(),
+				vehicleCounterSouth = new VehicleCounter(inputData.getSouthIncomingVehicle(),
 						inputData.getSouthOutgoingVehicle());
 				lastSouthVehicleCount += vehicleCounterSouth.getCount();
 
 				// East Counter
-				VehicleCounter vehicleCounterEast = new VehicleCounter(inputData.getEastIncomingVehicle(),
+				vehicleCounterEast = new VehicleCounter(inputData.getEastIncomingVehicle(),
 						inputData.getEastOutgoingVehicle());
 				lastEastVehicleCount += vehicleCounterEast.getCount();
 
 				// West Counter
-				VehicleCounter vehicleCounterWest = new VehicleCounter(inputData.getWestIncomingVehicle(),
+				vehicleCounterWest = new VehicleCounter(inputData.getWestIncomingVehicle(),
 						inputData.getWestOutgoingVehicle());
 				lastWestVehicleCount += vehicleCounterWest.getCount();
 
@@ -75,22 +88,21 @@ public class Application {
 				System.out.println(" ");
 
 				// Determine Direction and Count
-				DetermineDirection determineDirection = new DetermineDirection(lastNorthVehicleCount,
-						lastSouthVehicleCount, lastEastVehicleCount, lastWestVehicleCount, lastExecution, changeSignal);
+				determineDirection = new DetermineDirection(lastNorthVehicleCount, lastSouthVehicleCount,
+						lastEastVehicleCount, lastWestVehicleCount, lastExecution, changeSignal);
 
-				Node result = determineDirection.determineCountAndDirection();
+				result = determineDirection.determineCountAndDirection();
 				// lastExecution = result.getLastExecution();
 
 				// Critical Flow
 
-				CriticalFlow criticalFlow = new CriticalFlow(result.getCountPrimary(), result.getCountSecondary(),
+				criticalFlow = new CriticalFlow(result.getCountPrimary(), result.getCountSecondary(),
 						result.getDirection(), inputData.getSaturationNS(), inputData.getSaturationEW());
 				Map<String, Double> cfMap = criticalFlow.getCriticalFlow();
 
 				// Webster Module
 
-				Webster webster = new Webster(cfMap.get("criticalFlowNS"), cfMap.get("criticalFlowEW"),
-						result.getDirection());
+				webster = new Webster(cfMap.get("criticalFlowNS"), cfMap.get("criticalFlowEW"), result.getDirection());
 
 				int greenTime = webster.findGreenTime();
 
@@ -99,8 +111,8 @@ public class Application {
 				System.out.println(" ");
 
 				// Data Processing Controller
-				DataProcessingController dataProcessingController = new DataProcessingController(greenTime,
-						result.getDirection(), isAnyEmergency);
+				dataProcessingController = new DataProcessingController(greenTime, result.getDirection(),
+						isAnyEmergency);
 				Map<String, Boolean> lightSignalResponse = dataProcessingController.calculateChangeSignal();
 
 				if (lightSignalResponse.get("EWgsLatch")) {

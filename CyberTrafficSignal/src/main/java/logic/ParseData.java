@@ -10,7 +10,9 @@ import org.springframework.util.ResourceUtils;
 
 public class ParseData {
 
-	public static List<InputData> parseFile(String filePath) throws IOException {
+	InputData inputData;
+
+	public List<InputData> parseFile(String filePath) throws IOException {
 
 		List<InputData> list = new ArrayList<>();
 		File file = ResourceUtils.getFile("classpath:inputData.txt");
@@ -21,7 +23,7 @@ public class ParseData {
 
 			String[] data = content.get(i).split(",");
 
-			InputData inputData = new InputData();
+			inputData = new InputData();
 			inputData.setNorthIncomingVehicle(Integer.valueOf(data[0]));
 			inputData.setNorthOutgoingVehicle(Integer.valueOf(data[1]));
 			inputData.setSouthIncomingVehicle(Integer.valueOf(data[2]));

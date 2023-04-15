@@ -10,6 +10,7 @@ public class DataProcessingController {
 	Integer counter;
 	String direction;
 	String emergency;
+	LightSignalController lightSignalController;
 
 	public DataProcessingController(Integer greenTime, String direction, String emergency) {
 		super();
@@ -27,7 +28,7 @@ public class DataProcessingController {
 
 		while (this.counter > 0) {
 
-			LightSignalController lightSignalController = new LightSignalController(this.direction, this.emergency);
+			lightSignalController = new LightSignalController(this.direction, this.emergency);
 			map = lightSignalController.determineSignal();
 
 			this.counter--;
@@ -49,7 +50,8 @@ public class DataProcessingController {
 		System.out.println(" ");
 		System.out.println("                    ********* Round Over *********                      ");
 
-		System.out.println("---------------------------------------------------------------------------------------------------------------------");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------------------------------");
 		System.out.println(" ");
 
 		return map;

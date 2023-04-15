@@ -8,6 +8,7 @@ public class DetermineDirection {
 	int westCount;
 	String lastExecution;
 	boolean changeSignal;
+	Node node;
 
 	public int getNorthCount() {
 		return northCount;
@@ -72,7 +73,7 @@ public class DetermineDirection {
 
 		int northSouth = this.northCount + this.southCount;
 		int eastWest = this.eastCount + this.westCount;
-		Node node = new Node();
+		node = new Node();
 
 		if (this.changeSignal) {
 			if (this.lastExecution.equals(Constants.NS)) {

@@ -27,17 +27,25 @@ public class Webster {
 		if (this.criticalFlowNS != null && this.criticalFlowEW != null && this.direction != null) {
 			L = (double) ((countPhase * lostTime) + allRed);
 
-			if (direction.equals("NS")) {
+			if (direction.equals(Constants.NS)) {
 				ya = criticalFlowNS;
 			} else {
 				ya = criticalFlowEW;
 
 			}
 			double y = (ya / (criticalFlowNS + criticalFlowEW));
-			OCL = (1.5 * L + 5) / (1 - y);
+
+			double temp;
+			if (y >= 1) {
+				temp = 1;
+			} else {
+				temp = (1 - y);
+			}
+
+			OCL = (1.5 * L + 5) / temp;
 			greenTime = (int) Math.round((ya / y) * (OCL - L));
 		}
-		return greenTime <= 180 ? greenTime : 180;
+		return greenTime <= 0 ? 30 : greenTime <= 180 ? greenTime : 180;
 	}
 
 }

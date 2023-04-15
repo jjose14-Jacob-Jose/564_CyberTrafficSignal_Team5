@@ -67,7 +67,7 @@ public class CriticalFlow {
 		Map<String, Double> map = new HashMap<>();
 
 		if (this.countPrimaryRoad != null && this.countSecondaryRoad != null && this.direction != null) {
-			if (this.getDirection().equals("NS")) {
+			if (this.getDirection().equals(Constants.NS)) {
 				criticalFlowNS = ((double) this.countPrimaryRoad * 60 / this.saturationNS * 1.000);
 				criticalFlowEW = ((double) this.countSecondaryRoad * 60 / this.saturationEW * 1.000);
 			} else {
