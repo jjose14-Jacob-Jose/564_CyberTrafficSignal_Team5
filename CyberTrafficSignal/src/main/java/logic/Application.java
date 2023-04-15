@@ -61,10 +61,10 @@ public class Application {
 				System.out.println(" ");
 
 				System.out.println(
-						"North vehicle Count         South vehicle Count          West vehicle Count          East vehicle Count");
+						"North vehicle Count         South vehicle Count          East vehicle Count          West vehicle Count");
 				System.out.println("       " + lastNorthVehicleCount + "     " + "                    "
-						+ lastSouthVehicleCount + "     " + "                            " + lastWestVehicleCount
-						+ "     " + "               " + lastEastVehicleCount + "     ");
+						+ lastSouthVehicleCount + "     " + "                            " + lastEastVehicleCount
+						+ "     " + "               " + lastWestVehicleCount + "     ");
 
 				System.out.println(" ");
 
@@ -118,3 +118,5 @@ public class Application {
 	}
 
 }
+
+
