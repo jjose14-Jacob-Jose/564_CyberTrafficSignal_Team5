@@ -5,25 +5,25 @@ import java.util.Map;
 
 public class Application {
 
-	static int lastNorthVehicleCount;
-	static int lastSouthVehicleCount;
-	static int lastEastVehicleCount;
-	static int lastWestVehicleCount;
-	static String lastExecution;
-	static boolean changeSignal;
-	static int roundCount;
-	static VehicleCounter vehicleCounterNorth;
-	static List<InputData> listOfRounds;
-	static EmergencyVehiclePolling evp;
-	static VehicleCounter vehicleCounterSouth;
-	static VehicleCounter vehicleCounterEast;
-	static VehicleCounter vehicleCounterWest;
-	static DetermineDirection determineDirection;
-	static Node result;
-	static CriticalFlow criticalFlow;
-	static Webster webster;
-	static DataProcessingController dataProcessingController;
-	static ParseData parseData;
+	private static int lastNorthVehicleCount;
+	private static int lastSouthVehicleCount;
+	private static int lastEastVehicleCount;
+	private static int lastWestVehicleCount;
+	private static String lastExecution;
+	private static boolean changeSignal;
+	private static int roundCount;
+	private static VehicleCounter vehicleCounterNorth;
+	private static List<InputData> listOfRounds;
+	private static EmergencyVehiclePolling evp;
+	private static VehicleCounter vehicleCounterSouth;
+	private static VehicleCounter vehicleCounterEast;
+	private static VehicleCounter vehicleCounterWest;
+	private static DetermineDirection determineDirection;
+	private static Node result;
+	private static CriticalFlow criticalFlow;
+	private static Webster webster;
+	private static DataProcessingController dataProcessingController;
+	private static ParseData parseData;
 
 	public static void main(String[] args) {
 

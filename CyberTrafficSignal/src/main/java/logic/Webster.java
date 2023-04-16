@@ -2,15 +2,15 @@ package logic;
 
 public class Webster {
 
-	Double criticalFlowNS;
-	Double criticalFlowEW;
-	String direction;
-	final int lostTime = 2;
-	final int allRed = 0;
-	final int countPhase = 2;
-	Double OCL;
-	Double ya;
-	Double L;
+	private Double criticalFlowNS;
+	private Double criticalFlowEW;
+	private String direction;
+	private final int lostTime = 2;
+	private final int allRed = 0;
+	private final int countPhase = 2;
+	private Double OCL;
+	private Double ya;
+	private Double L;
 
 	public Webster(Double criticalFlowNS, Double criticalFlowEW, String direction) {
 		super();

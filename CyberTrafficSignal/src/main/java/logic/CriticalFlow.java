@@ -5,11 +5,11 @@ import java.util.Map;
 
 public class CriticalFlow {
 
-	Integer countPrimaryRoad;
-	Integer countSecondaryRoad;
-	String direction;
-	int saturationNS;
-	int saturationEW;
+	private Integer countPrimaryRoad;
+	private Integer countSecondaryRoad;
+	private String direction;
+	private int saturationNS;
+	private int saturationEW;
 
 	public CriticalFlow(Integer countPrimaryRoad, Integer countSecondaryRoad, String direction, int saturationNS,
 			int saturationEW) {

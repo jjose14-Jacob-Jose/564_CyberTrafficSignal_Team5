@@ -2,10 +2,10 @@ package logic;
 
 public class EmergencyVehiclePolling {
 
-	boolean isNorthEmergency;
-	boolean isSouthEmergency;
-	boolean isEastEmergency;
-	boolean isWestEmergency;
+	private boolean isNorthEmergency;
+	private boolean isSouthEmergency;
+	private boolean isEastEmergency;
+	private boolean isWestEmergency;
 
 	public boolean isNorthEmergency() {
 		return isNorthEmergency;

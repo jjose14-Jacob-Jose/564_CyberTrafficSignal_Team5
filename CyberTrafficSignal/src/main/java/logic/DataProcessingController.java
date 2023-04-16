@@ -6,11 +6,11 @@ import java.util.Map.Entry;
 
 public class DataProcessingController {
 
-	Integer greenTime;
-	Integer counter;
-	String direction;
-	String emergency;
-	LightSignalController lightSignalController;
+	private Integer greenTime;
+	private Integer counter;
+	private String direction;
+	private String emergency;
+	private LightSignalController lightSignalController;
 
 	public DataProcessingController(Integer greenTime, String direction, String emergency) {
 		super();

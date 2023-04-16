@@ -10,7 +10,7 @@ import org.springframework.util.ResourceUtils;
 
 public class ParseData {
 
-	InputData inputData;
+	private InputData inputData;
 
 	public List<InputData> parseFile(String filePath) throws IOException {
 

@@ -2,13 +2,13 @@ package logic;
 
 public class DetermineDirection {
 
-	int northCount;
-	int southCount;
-	int eastCount;
-	int westCount;
-	String lastExecution;
-	boolean changeSignal;
-	Node node;
+	private int northCount;
+	private int southCount;
+	private int eastCount;
+	private int westCount;
+	private String lastExecution;
+	private boolean changeSignal;
+	private Node node;
 
 	public int getNorthCount() {
 		return northCount;
