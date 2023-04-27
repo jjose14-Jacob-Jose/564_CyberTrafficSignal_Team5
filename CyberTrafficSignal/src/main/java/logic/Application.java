@@ -12,12 +12,12 @@ public class Application {
 	private static String lastExecution;
 	private static boolean changeSignal;
 	private static int roundCount;
-	private static VehicleCounter vehicleCounterNorth;
+	private static VehicleCounterIfc vehicleCounterNorth;
 	private static List<InputData> listOfRounds;
 	private static EmergencyVehiclePolling evp;
-	private static VehicleCounter vehicleCounterSouth;
-	private static VehicleCounter vehicleCounterEast;
-	private static VehicleCounter vehicleCounterWest;
+	private static VehicleCounterIfc vehicleCounterSouth;
+	private static VehicleCounterIfc vehicleCounterEast;
+	private static VehicleCounterIfc vehicleCounterWest;
 	private static DetermineDirection determineDirection;
 	private static Node result;
 	private static CriticalFlow criticalFlow;
@@ -51,22 +51,22 @@ public class Application {
 				String isAnyEmergency = evp.isAnyEmergency();
 
 				// North Counter
-				vehicleCounterNorth = new VehicleCounter(inputData.getNorthIncomingVehicle(),
+				vehicleCounterNorth = new VehicleCounterNorth(inputData.getNorthIncomingVehicle(),
 						inputData.getNorthOutgoingVehicle());
 				lastNorthVehicleCount += vehicleCounterNorth.getCount();
 
 				// South Counter
-				vehicleCounterSouth = new VehicleCounter(inputData.getSouthIncomingVehicle(),
+				vehicleCounterSouth = new VehicleCounterSouth(inputData.getSouthIncomingVehicle(),
 						inputData.getSouthOutgoingVehicle());
 				lastSouthVehicleCount += vehicleCounterSouth.getCount();
 
 				// East Counter
-				vehicleCounterEast = new VehicleCounter(inputData.getEastIncomingVehicle(),
+				vehicleCounterEast = new VehicleCounterEast(inputData.getEastIncomingVehicle(),
 						inputData.getEastOutgoingVehicle());
 				lastEastVehicleCount += vehicleCounterEast.getCount();
 
 				// West Counter
-				vehicleCounterWest = new VehicleCounter(inputData.getWestIncomingVehicle(),
+				vehicleCounterWest = new VehicleCounterWest(inputData.getWestIncomingVehicle(),
 						inputData.getWestOutgoingVehicle());
 				lastWestVehicleCount += vehicleCounterWest.getCount();
 

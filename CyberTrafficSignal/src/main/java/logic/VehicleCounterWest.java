@@ -1,11 +1,11 @@
 package logic;
 
-public class VehicleCounter {
+public class VehicleCounterWest implements VehicleCounterIfc {
 
 	private int incomingVehicle;
 	private int outgoingVehicle;
 
-	public VehicleCounter(int incomingVehicle, int outgoingVehicle) {
+	public VehicleCounterWest(int incomingVehicle, int outgoingVehicle) {
 		super();
 		this.incomingVehicle = incomingVehicle;
 		this.outgoingVehicle = outgoingVehicle;
