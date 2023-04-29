@@ -5,11 +5,14 @@
 ## Development Environment Setup:
 1. Java Development Kit.
 2. Maven 
+3. Eclipse
 ---------------
 ## To execute:
 In project-directory execute following commands.
-1. mvn clean install
-2. java -jar target/*.jar
+1. Import the project folder to Eclipse.
+2. Go to Application.Java file
+3. Execute file by clicking on "Run Java Application"
+4. If you want to test how the application behaves for different, refer below section
 ----------------------------------
 ## Input Value file: inputData.txt:
 ###### The text file 'inputData.txt' at location 'src/main/resources/inputData.txt' has input data  
